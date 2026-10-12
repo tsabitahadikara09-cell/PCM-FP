@@ -1,0 +1,1270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1146</width>
+    <height>930</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DermaMNIST - Enhancement, Filter &amp; Segmentasi</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #2b2b2b;
+}
+QLabel {
+    color: #ffffff;
+    background: transparent;
+    font-size: 10pt;
+}
+QLabel[role=&quot;title&quot;] {
+    font-weight: bold;
+    color: #d0d0d0;
+}
+QLabel[role=&quot;heading&quot;] {
+    font-weight: bold;
+    font-size: 11pt;
+}
+QLabel[role=&quot;arrow&quot;] {
+    color: #2f8fdd;
+}
+QLabel[role=&quot;image&quot;] {
+    background-color: #1e1e1e;
+    border: 1px solid #555555;
+    border-radius: 4px;
+    color: #888888;
+}
+QTabWidget::pane {
+    border: 1px solid #555555;
+    border-radius: 4px;
+    top: -1px;
+}
+QTabBar::tab {
+    background-color: #3c3f41;
+    color: #cccccc;
+    border: 1px solid #555555;
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 8px 22px;
+    margin-right: 2px;
+    font-size: 10pt;
+}
+QTabBar::tab:selected {
+    background-color: #2f8fdd;
+    color: #ffffff;
+    font-weight: bold;
+}
+QTabBar::tab:hover:!selected {
+    background-color: #4a4d50;
+}
+QPushButton {
+    background-color: #3c3f41;
+    color: #ffffff;
+    border: 1px solid #5a5a5a;
+    border-radius: 4px;
+    min-height: 30px;
+    padding: 0 14px;
+    font-size: 10pt;
+}
+QPushButton:hover {
+    background-color: #4a4d50;
+}
+QPushButton:pressed {
+    background-color: #2f8fdd;
+}
+QPushButton:focus {
+    border: 1px solid #2f8fdd;
+}
+QComboBox, QLineEdit, QDoubleSpinBox {
+    background-color: #3b3b3b;
+    color: #ffffff;
+    border: 1px solid #5a5a5a;
+    border-radius: 4px;
+    min-height: 28px;
+    padding: 0 8px;
+    font-size: 10pt;
+}
+QComboBox:focus, QLineEdit:focus, QDoubleSpinBox:focus {
+    border: 1px solid #2f8fdd;
+}
+QComboBox QAbstractItemView {
+    background-color: #3b3b3b;
+    color: #ffffff;
+    selection-background-color: #2f8fdd;
+    selection-color: #ffffff;
+    border: 1px solid #5a5a5a;
+}
+QLineEdit[role=&quot;result&quot;] {
+    font-weight: bold;
+    font-size: 11pt;
+}
+QTableWidget {
+    background-color: #1e1e1e;
+    alternate-background-color: #262626;
+    color: #ffffff;
+    gridline-color: #444444;
+    border: 1px solid #555555;
+    border-radius: 4px;
+    selection-background-color: #2f8fdd;
+}
+QHeaderView::section {
+    background-color: #3c3f41;
+    color: #ffffff;
+    border: 1px solid #555555;
+    padding: 4px;
+    font-weight: bold;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayoutMain">
+   <property name="spacing">
+    <number>12</number>
+   </property>
+   <property name="leftMargin">
+    <number>16</number>
+   </property>
+   <property name="topMargin">
+    <number>16</number>
+   </property>
+   <property name="rightMargin">
+    <number>16</number>
+   </property>
+   <property name="bottomMargin">
+    <number>16</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayoutTop">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="labelJenisPenyakit">
+       <property name="text">
+        <string>Jenis Penyakit:</string>
+       </property>
+       <property name="role" stdset="0">
+        <string notr="true">heading</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboJenisPenyakit">
+       <property name="minimumSize">
+        <size>
+         <width>220</width>
+         <height>30</height>
+        </size>
+       </property>
+       <item>
+        <property name="text">
+         <string>AKIEC - Actinic keratoses</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MEL - Melanoma</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>NV - Melanocytic nevi</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacerTop">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnNext">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>NEXT</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabEnhancement">
+      <attribute name="title">
+       <string>Enhancement</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayoutEnh">
+       <property name="spacing">
+        <number>12</number>
+       </property>
+       <property name="leftMargin">
+        <number>12</number>
+       </property>
+       <property name="topMargin">
+        <number>12</number>
+       </property>
+       <property name="rightMargin">
+        <number>12</number>
+       </property>
+       <property name="bottomMargin">
+        <number>12</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutEnhControl">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_upload">
+           <property name="text">
+            <string>Upload Image:</string>
+           </property>
+           <property name="role" stdset="0">
+            <string notr="true">title</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_upload">
+           <property name="text">
+            <string>Upload Files</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_metode_enh">
+           <property name="text">
+            <string>Metode:</string>
+           </property>
+           <property name="role" stdset="0">
+            <string notr="true">title</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_metode_enhance">
+           <property name="minimumSize">
+            <size>
+             <width>190</width>
+             <height>30</height>
+            </size>
+           </property>
+           <item>
+            <property name="text">
+             <string>Histogram Equalization</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>AHE (CLAHE)</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Contrast Stretching</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacerEnh">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_histogram">
+           <property name="text">
+            <string>Show RGB Histogram</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_proses">
+           <property name="text">
+            <string>Enhance</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutEnhImages">
+         <property name="spacing">
+          <number>14</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayoutEnhAsli">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_title_enh_asli">
+             <property name="text">
+              <string>Original</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">title</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lbl_enh_asli">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>210</width>
+               <height>210</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>[ Gambar Original ]</string>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">image</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayoutEnhHasil">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_title_enh_hasil">
+             <property name="text">
+              <string>Enhanced</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">title</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lbl_enh_hasil">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>210</width>
+               <height>210</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>[ Hasil Enhancement ]</string>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">image</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayoutEnhHist">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_title_enh_hist">
+             <property name="text">
+              <string>RGB Histogram</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">title</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lbl_enh_hist">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>210</width>
+               <height>210</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>[ Histogram ]</string>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">image</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabFilter">
+      <attribute name="title">
+       <string>Filter</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayoutFilter">
+       <property name="spacing">
+        <number>12</number>
+       </property>
+       <property name="leftMargin">
+        <number>12</number>
+       </property>
+       <property name="topMargin">
+        <number>12</number>
+       </property>
+       <property name="rightMargin">
+        <number>12</number>
+       </property>
+       <property name="bottomMargin">
+        <number>12</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutFilterControl1">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_choose_filter">
+           <property name="text">
+            <string>Choose Filter:</string>
+           </property>
+           <property name="role" stdset="0">
+            <string notr="true">title</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_jenis_filter">
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>30</height>
+            </size>
+           </property>
+           <item>
+            <property name="text">
+             <string>median</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>mean</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_kernel">
+           <property name="text">
+            <string>Kernel:</string>
+           </property>
+           <property name="role" stdset="0">
+            <string notr="true">title</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="input_kernel">
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>3</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="placeholderText">
+            <string>3</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacerFilter1">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_jalankan_filter">
+           <property name="text">
+            <string>Apply Filter</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutFilterControl2">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btnSalt">
+           <property name="text">
+            <string>Salt N Peper Noise</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_density">
+           <property name="text">
+            <string>Density:</string>
+           </property>
+           <property name="role" stdset="0">
+            <string notr="true">title</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="spin_noise">
+           <property name="decimals">
+            <number>2</number>
+           </property>
+           <property name="minimum">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>0.500000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.050000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacerFilter2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnPsnr">
+           <property name="text">
+            <string>PSNR</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelPsnrInfo">
+           <property name="text">
+            <string>Perhitungan PSNR:</string>
+           </property>
+           <property name="role" stdset="0">
+            <string notr="true">title</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditPsnrResult">
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>130</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>31.67 dB</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="role" stdset="0">
+            <string notr="true">result</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutFilterImages">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayoutFAsli">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_title_f_asli">
+             <property name="text">
+              <string>Raw Image</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">title</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lbl_f_asli">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>[ Raw Image ]</string>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">image</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_arrow_1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>34</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>➔</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="role" stdset="0">
+            <string notr="true">arrow</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayoutFNoise">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="labelTitleSalt">
+             <property name="text">
+              <string>Salt N Peper Noise</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">title</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lbl_f_noise">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>[ Noise ]</string>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">image</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_arrow_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>34</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>➔</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="role" stdset="0">
+            <string notr="true">arrow</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayoutFHasil">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_title_f_hasil">
+             <property name="text">
+              <string>Filtered</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">title</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lbl_f_hasil">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>190</width>
+               <height>190</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>[ Hasil Filter ]</string>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">image</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tabel_komparasi">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>150</height>
+          </size>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>Jenis Filter</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Kernel</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>PSNR (dB)</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>MSE</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabSegmentasi">
+      <attribute name="title">
+       <string>Segmentasi</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayoutSeg">
+       <property name="spacing">
+        <number>12</number>
+       </property>
+       <property name="leftMargin">
+        <number>12</number>
+       </property>
+       <property name="topMargin">
+        <number>12</number>
+       </property>
+       <property name="rightMargin">
+        <number>12</number>
+       </property>
+       <property name="bottomMargin">
+        <number>12</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutSegControl">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_metode_seg">
+           <property name="text">
+            <string>Metode Segmentasi:</string>
+           </property>
+           <property name="role" stdset="0">
+            <string notr="true">title</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_metode_seg">
+           <property name="minimumSize">
+            <size>
+             <width>190</width>
+             <height>30</height>
+            </size>
+           </property>
+           <item>
+            <property name="text">
+             <string>Otsu Threshold</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>K-Means Clustering</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Watershed</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacerSeg">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_segmentasi">
+           <property name="text">
+            <string>Segment</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayoutSegImages">
+         <property name="spacing">
+          <number>14</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayoutSegAsli">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_title_seg_asli">
+             <property name="text">
+              <string>Input</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">title</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lbl_seg_asli">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>210</width>
+               <height>210</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>[ Gambar Input ]</string>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">image</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayoutSegMask">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_title_seg_mask">
+             <property name="text">
+              <string>Mask Segmentasi</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">title</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lbl_seg_mask">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>210</width>
+               <height>210</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>[ Mask ]</string>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">image</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayoutSegOverlay">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_title_seg_overlay">
+             <property name="text">
+              <string>Overlay</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">title</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lbl_seg_overlay">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>210</width>
+               <height>210</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>[ Overlay ]</string>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">image</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayoutBottom">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <item>
+      <spacer name="spacerBottom">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnClose">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>CLOSE</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>comboJenisPenyakit</tabstop>
+  <tabstop>btnNext</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>btn_upload</tabstop>
+  <tabstop>combo_metode_enhance</tabstop>
+  <tabstop>btn_histogram</tabstop>
+  <tabstop>btn_proses</tabstop>
+  <tabstop>combo_jenis_filter</tabstop>
+  <tabstop>input_kernel</tabstop>
+  <tabstop>btn_jalankan_filter</tabstop>
+  <tabstop>btnSalt</tabstop>
+  <tabstop>spin_noise</tabstop>
+  <tabstop>btnPsnr</tabstop>
+  <tabstop>combo_metode_seg</tabstop>
+  <tabstop>btn_segmentasi</tabstop>
+  <tabstop>btnClose</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btnClose</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
