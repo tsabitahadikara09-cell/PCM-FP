@@ -1,3 +1,4 @@
+
 streamlit
 numpy
 scipy
@@ -6,3 +7,4 @@ scikit-image
 matplotlib
 medmnist
 openpyxl
+      
