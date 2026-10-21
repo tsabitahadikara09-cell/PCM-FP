@@ -840,15 +840,15 @@ def sec_ukur():
 
 
 PAGES = {
-    "📂 1 · Data & Contoh Citra": sec_data,
-    "📊 2 · Histogram & Equalization": sec_hist,
-    "🔆 2b · CLAHE": sec_clahe,
-    "🧮 3 · Filtering: Teori & Contoh": sec_teori,
-    "📡 3.2 · Uji Filter terhadap Noise": sec_noise,
-    "⚖️ 3.3 · Mean vs Median": sec_cmp,
-    "💈 4 · Hair Removal": sec_hair,
-    "🎯 5 · Segmentasi Lesi": sec_seg,
-    "🏷️ 6 · Labeling & Region Properties": sec_ukur,
+    "Data & Contoh Citra": sec_data,
+    "Histogram & Equalization": sec_hist,
+    "CLAHE": sec_clahe,
+    "Filtering: Teori & Contoh": sec_teori,
+    "Uji Filter terhadap Noise": sec_noise,
+    "Mean vs Median": sec_cmp,
+    "Hair Removal": sec_hair,
+    "Segmentasi Lesi": sec_seg,
+    "Labeling & Region Properties": sec_ukur,
 }
 
 # ============================================================================
